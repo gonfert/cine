@@ -1,0 +1,8 @@
+# Composer PHAR
+composer.phar
+
+# Doctrine
+vendor/
+
+# Otros
+*.php~

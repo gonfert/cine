@@ -1,0 +1,27 @@
+/*
+    Definiciones de estilos / Style definitions
+*/
+body {
+    font-family: "sans-serif";
+}
+
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+table {
+    border-collapse: collapse
+}
+
+td,th {
+    border: 1px black solid; padding: 5px
+}
+
+th {
+    background-color: #d0d0d0
+}
+
