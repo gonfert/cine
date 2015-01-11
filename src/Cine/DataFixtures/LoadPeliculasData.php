@@ -1,6 +1,7 @@
 <?php
 /**
  * Description of LoadPeliculasData
+ * 
  */
 
 namespace Cine\DataFixtures;

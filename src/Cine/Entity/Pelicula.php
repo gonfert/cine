@@ -11,11 +11,6 @@ use Doctrine\ORM\Mapping\Column;
 
 /**
  * Description of Pelicula
- *
- * @author jr
- * time: 19:00:18
- * date: 05-ene-2015
- * 
  * 
  *  @Entity
  *  @Table( indexes={ @Index(name="year_idx", columns="year") },  name="movie" )

@@ -1,11 +1,5 @@
 <?php
 /*
- * Name  : borra-pelicula.php
- * 
- * Author: jr
- * Time  : 18:52:23
- * Date  : 07-ene-2015
- * 
  * Borra una pelicula
  * 
  */

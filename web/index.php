@@ -1,6 +1,7 @@
 <?php
 /*
  * Name  : index.php
+ * 
  */
 
 // Bootstrap de la aplicacion
