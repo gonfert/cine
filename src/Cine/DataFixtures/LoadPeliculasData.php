@@ -21,11 +21,11 @@ class LoadPeliculasData implements FixtureInterface {
         ['titulo'=>'Un puente lejano', 'titulo_original'=>'A bridge too far', 'director'=>'Richard Attenborough', 'anyo'=>'1977'],
         ['titulo'=>'Matrix', 'titulo_original'=>'Matrix', 'director'=>'Wachowski Brothers', 'anyo'=>'1999'],
         ['titulo'=>'Nivel 13', 'titulo_original'=>'The Thirteenth Floor ', 'director'=>'Josef Rusnak', 'anyo'=>'1999'],
-        ['titulo'=>'Blade Runner', 'titulo_original'=>'Blade Runner', 'director'=>'Ridley Scott', 'anyo'=>''],
+        ['titulo'=>'Blade Runner', 'titulo_original'=>'Blade Runner', 'director'=>'Ridley Scott', 'anyo'=>'1982'],
         ['titulo'=>'Moon', 'titulo_original'=>'Moon', 'director'=>'Duncan Jones', 'anyo'=>'2009'],
         
         ['titulo'=>'Brazil', 'titulo_original'=>'Brazil', 'director'=>'Terry Gilliam', 'anyo'=>'1985'],
-        ['titulo'=>'El crepusculo de los dioses','titulo_original'=>'Sunset Bulevard', 'director'=>'Billy Wilder', 'anyo'=>'1950'],
+        ['titulo'=>'El crepusculo de los dioses','titulo_original'=>'Sunset Boulevard', 'director'=>'Billy Wilder', 'anyo'=>'1950'],
         ['titulo'=>'La cosa', 'titulo_original'=>'The thing', 'director'=>'John Carpenter', 'anyo'=>'1982'],
         ['titulo'=>'Alien, el octavo pasajero', 'titulo_original'=>'Alien', 'director'=>'Ridley Scott', 'anyo'=>'1979'],
         ['titulo'=>'La guerra de las galaxias', 'titulo_original'=>'Star Wars', 'director'=>'George Lucas', 'anyo'=>'1977'],  

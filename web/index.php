@@ -35,7 +35,7 @@ $peliculas = $entityManager->getRepository('Cine\Entity\Pelicula')->findAll();
                 <th>T&iacute;tulo Original</th><th colspan="2"></th></tr>
         <?php foreach ($peliculas as $p): ?>
             <tr>
-                <td><?=$p->getTitulo()?></td>
+                <td><a href="ver-pelicula.php?id=<?=$p->getId()?>"><?=$p->getTitulo()?></a></td>
                 <td><?=$p->getTituloOriginal()?></td>
                 <td><a href="edita-pelicula.php?id=<?=$p->getId()?>">Editar</a></td>
                 <td><a href="borra-pelicula.php?id=<?=$p->getId()?>" 

@@ -8,6 +8,11 @@ use Doctrine\ORM\Mapping\Index;
 use Doctrine\ORM\Mapping\Id;
 use Doctrine\ORM\Mapping\GeneratedValue;
 use Doctrine\ORM\Mapping\Column;
+use Doctrine\ORM\Mapping\OneToMany;
+use Doctrine\ORM\Mapping\ManyToMany;
+use Doctrine\ORM\Mapping\JoinTable;
+use Doctrine\ORM\Mapping\JoinColumn;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Description of Pelicula
@@ -64,6 +69,32 @@ class Pelicula {
      */
     private $anyo;
  
+    /**
+     * @var Comentario[]
+     * 
+     * @OneToMany(targetEntity="Comentario", mappedBy="pelicula")
+     */
+    protected $comentarios;    
+    
+    /**
+     * @var Etiqueta[]
+     *
+     * @ManyToMany(targetEntity="Etiqueta", inversedBy="peliculas", fetch="EAGER", cascade={"persist"}, orphanRemoval=true)
+     * @JoinTable(
+     *      name="movie_tag",
+     *      inverseJoinColumns={ @JoinColumn(name="tag_name", referencedColumnName="name") }
+     * )
+     */
+    protected $etiquetas;      
+    
+    /**
+     * Inicializamos colleciones
+     */
+    public function __construct()
+    {
+        $this->comentarios = new ArrayCollection();
+        $this->etiquetas = new ArrayCollection();
+    }        
 
     /**
      * Get id
@@ -165,5 +196,72 @@ class Pelicula {
     public function getAnyo()
     {
         return $this->anyo;
+    }
+
+    /**
+     * Add comentarios
+     *
+     * @param \Cine\Entity\Comentario $comentarios
+     * @return Pelicula
+     */
+    public function addComentario(\Cine\Entity\Comentario $comentarios)
+    {
+        $this->comentarios[] = $comentarios;
+        $comentarios->setPelicula($this);
+        
+        return $this;
+    }
+
+    /**
+     * Remove comentarios
+     *
+     * @param \Cine\Entity\Comentario $comentarios
+     */
+    public function removeComentario(\Cine\Entity\Comentario $comentarios)
+    {
+        $this->comentarios->removeElement($comentarios);
+    }
+
+    /**
+     * Get comentarios
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getComentarios()
+    {
+        return $this->comentarios;
+    }
+
+    /**
+     * Add etiquetas
+     *
+     * @param \Cine\Entity\Etiqueta $etiquetas
+     * @return Pelicula
+     */
+    public function addEtiqueta(\Cine\Entity\Etiqueta $etiquetas)
+    {
+        $this->etiquetas[] = $etiquetas;
+
+        return $this;
+    }
+
+    /**
+     * Remove etiquetas
+     *
+     * @param \Cine\Entity\Etiqueta $etiquetas
+     */
+    public function removeEtiqueta(\Cine\Entity\Etiqueta $etiquetas)
+    {
+        $this->etiquetas->removeElement($etiquetas);
+    }
+
+    /**
+     * Get etiquetas
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getEtiquetas()
+    {
+        return $this->etiquetas;
     }
 }
