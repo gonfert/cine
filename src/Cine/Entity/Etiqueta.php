@@ -96,4 +96,13 @@ class Etiqueta {
     {
         return $this->peliculas;
     }
+    
+    /**
+     * Reescritura del metodo 'magico' __toString. Permite la impresion de un objeto de la clase
+     * @return type string
+     */
+    public function __toString()
+    {
+        return $this->getNombre();
+    }
 }

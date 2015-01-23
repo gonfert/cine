@@ -5,6 +5,7 @@
  */
  
 use Cine\Entity\Pelicula;
+use Cine\Entity\Etiqueta;
 
 require_once __DIR__.'/../src/bootstrap.php';
 
@@ -32,6 +33,29 @@ if ('POST' === $_SERVER['REQUEST_METHOD']) {
         ->setAnyo($_POST['anyo'])
         ->setDirector($_POST['director'])
     ;
+    
+    // Obtenemos la etiquetas
+    $lasEtiquetas = [];
+    foreach (explode(',', $_POST['etiquetas']) as $unaEtiqueta) {
+        $nombreEtiqueta = trim($unaEtiqueta);
+        $etiqueta = $entityManager->find('Cine\Entity\Etiqueta', $nombreEtiqueta);
+        if (!$etiqueta) {
+            $etiqueta = new Etiqueta();
+            $etiqueta->setNombre($nombreEtiqueta);
+        }
+        $lasEtiquetas[] = $etiqueta;
+    }
+    
+    // Eliminamos etiquetas no usadas
+    foreach (array_diff($pelicula->getEtiquetas()->toArray(), $lasEtiquetas) as $etiqueta) {
+        $pelicula->removeEtiqueta($etiqueta);
+    }
+    
+    // Inserta nuevas etiquetas
+    foreach (array_diff($lasEtiquetas, $pelicula->getEtiquetas()->toArray()) as $etiqueta) {
+        $pelicula->addEtiqueta($etiqueta);
+    }            
+    
     // Persistimos la entidad
     $entityManager->flush();
 
@@ -74,6 +98,11 @@ $pageTitle = isset ($pelicula) ? sprintf('Editando pelicula #%d', $pelicula->get
         <input type="text" name="anyo" 
                value="<?=isset ($pelicula) ? $pelicula->getAnyo() : ''?>" 
                maxlength="100" required>
+        <br>
+        <label>Etiquetas</label>
+        <input type="text" name="etiquetas" 
+               value="<?=isset ($pelicula) ? htmlspecialchars(implode(', ', $pelicula->getEtiquetas()->toArray())) : ''?>" 
+               maxlength="100" required>        
         <br>
         <br>
         <input type="submit" value="Enviar">
