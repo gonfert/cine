@@ -17,8 +17,9 @@ use Doctrine\Common\Collections\ArrayCollection;
 /**
  * Description of Pelicula
  * 
- *  @Entity
+ *  @Entity(repositoryClass="PeliculaRepository")
  *  @Table( indexes={ @Index(name="year_idx", columns="year") },  name="movie" )
+ * 
  */
 class Pelicula {
     

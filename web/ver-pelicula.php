@@ -9,7 +9,10 @@ use Cine\Entity\Comentario;
 require_once __DIR__.'/../src/bootstrap.php';
 
 // Recuperamos la pelicula indicada por el ID, si existe.
-$pelicula = $entityManager->find('Cine\Entity\Pelicula', $_GET['id']);
+//$pelicula = $entityManager->find('Cine\Entity\Pelicula', $_GET['id']);
+//
+// Recuperamos la pelicula (con sus comentarios) indicada por el ID, si existe.
+$pelicula = $entityManager->getRepository('Cine\Entity\Pelicula')->findConComentarios($_GET['id']);
 if (!$pelicula) {
     throw new \Exception('Pelicula no encontrada');
 }
@@ -52,8 +55,12 @@ $pageTitle = $pelicula->getTitulo();
     
     <?php foreach($pelicula->getComentarios() as $c): ?>
     <blockquote>
-        <p><cite>&quot;<?=$c->getTexto()?>&quot;</cite><br><?=$c->getFecha()->format('Y-m-d H:i:s')?></p>
-        <a href="borra-comentario.php?id=<?=$c->getId()?>">Borrar comentario</a>
+        <p>
+            <cite>&quot;<?=$c->getTexto()?>&quot;</cite><br>
+            <?=$c->getFecha()->format('Y-m-d H:i:s')?>
+        </p>
+        <a href="borrar-comentario.php?id=<?=$c->getId()?>"
+           onclick="return confirm('Estas seguro?')">Borrar comentario</a>
     </blockquote>
     <?php endforeach ?>
         

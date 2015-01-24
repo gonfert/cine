@@ -6,7 +6,7 @@
 
 require_once __DIR__ . '/../src/bootstrap.php';
 
-$comentario = $entityManager->find('Blog\Entity\Comentaro', $_GET['id']);
+$comentario = $entityManager->find('Cine\Entity\Comentario', $_GET['id']);
 
 if (!$comentario) {
     throw new \Exception('Comentario no encontrado');
