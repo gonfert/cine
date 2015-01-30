@@ -1,6 +1,6 @@
 <?php
 /*
- * Name  : index.php
+ * Pagina inicial de la aplicacion
  * 
  */
 
@@ -10,7 +10,7 @@ require_once __DIR__.'/../src/bootstrap.php';
 // Recuperamos el listado completo de las peliculas de la BBDD
 //$peliculas = $entityManager->getRepository('Cine\Entity\Pelicula')->findAll();
 
-// Obtenoms el repositorio de la entidad
+// Obtenemos el repositorio de la entidad
 $repositorio = $entityManager->getRepository('Cine\Entity\Pelicula');
 // Si nos especifican etiquetas filtramos, de lo contrario, mostramos todo.
 // Ojo, que esto nos devuelve un array de arrays

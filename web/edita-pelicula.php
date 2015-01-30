@@ -97,7 +97,7 @@ $pageTitle = isset ($pelicula) ? sprintf('Editando pelicula #%d', $pelicula->get
         <label>A&ntilde;o</label>
         <input type="text" name="anyo" 
                value="<?=isset ($pelicula) ? $pelicula->getAnyo() : ''?>" 
-               maxlength="100" required>
+               maxlength="5" required>
         <br>
         <label>Etiquetas</label>
         <input type="text" name="etiquetas" 
