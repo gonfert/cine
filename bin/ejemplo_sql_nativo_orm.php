@@ -43,11 +43,11 @@ $rsmb->addJoinedEntityFromClassMetadata(
 );        
 
 // Ej SQL: Obtener el id, el titulo original, y todos los comentarios de las peliculas
-// cuyo año de estreno sea posterior o igual al 1982
+// cuyo año de estreno sea posterior o igual al 1988
 $sql = <<<SQL
 SELECT movie.id, movie.original_title, comment.id as comment_id, comment.texto, comment.fecha
 FROM movie INNER JOIN comment ON movie.id = comment.pelicula_id
-WHERE movie.year >= 1982
+WHERE movie.year >= 1988
 ORDER BY movie.id, comment.fecha
 SQL;
 
@@ -71,7 +71,7 @@ foreach($result as $res) {
         echo "Comentarios:\n";
         {
         foreach ($comentarios as $com) {
-            echo sprintf("-(%s) '%s'%s",$com->getFecha()->format('Y-m-d'), $com->getTexto(),PHP_EOL);         
+            echo sprintf("(%s) '%s'%s",$com->getFecha()->format('Y-m-d'), $com->getTexto(),PHP_EOL);         
         }
     }
     
