@@ -17,8 +17,8 @@ use Doctrine\Common\Collections\ArrayCollection;
 /**
  * Description of Pelicula
  * 
- *  @Entity(repositoryClass="PeliculaRepository")
- *  @Table( indexes={ @Index(name="year_idx", columns="year") },  name="movie" )
+ *  @Entity( repositoryClass="PeliculaRepository" )
+ *  @Table( name="movie", indexes={ @Index(name="year_idx", columns="year") } )
  * 
  */
 class Pelicula {
@@ -80,16 +80,34 @@ class Pelicula {
     /**
      * @var Etiqueta[]
      *
-     * @ManyToMany(targetEntity="Etiqueta", inversedBy="peliculas", fetch="EAGER", cascade={"persist"}, orphanRemoval=true)
+     * @ManyToMany(
+     *      targetEntity="Etiqueta", 
+     *      inversedBy="peliculas", 
+     *      fetch="EAGER", 
+     *      cascade={"persist"}, orphanRemoval=true
+     * )
      * @JoinTable(
      *      name="movie_tag",
      *      inverseJoinColumns={ @JoinColumn(name="tag_name", referencedColumnName="name") }
      * )
+     * 
+     * Notas: 
+     * El criterio de obtencion (fetch) de las entidades relacionadas es LAZY. 
+     * Esto implica una segunda consulta SQL en el caso de querer acceder a sus datos.
+     * Cambiandolo a 'fetch=EAGER' se introduce un JOIN en el SQL generado, haciendo
+     * que Doctrine ponga esos datos como disponibles en una sola consulta.
+     * Conseguimos mejor rendimiento SQL a costa de mayor consumo de memoria.
+     * 
+     * El valor 'persist' de la opcion 'casacade', permite que las entidades asociadas
+     * creadas con new() sean gestionadad automaticamente por doctrine sin necesidad de
+     * hace un persist() en cada una de ellas.
+     * 
+     * 
      */
     protected $etiquetas;      
     
     /**
-     * Inicializamos colleciones
+     * Inicializamos colecciones
      */
     public function __construct()
     {
@@ -265,4 +283,31 @@ class Pelicula {
     {
         return $this->etiquetas;
     }
+    
+    /**
+     *  Implementacion segura de _clone() y __wake()
+     * 
+     */
+    
+    /*
+    public function __clone()
+    {
+        // If the entity has an identity, proceed as normal.
+        if ($this->id) {
+            // ... Your code here as normal ...
+        }
+        // otherwise do nothing, do NOT throw an exception!
+    }  
+
+    public function __wakeup()
+    {
+        // If the entity has an identity, proceed as normal.
+        if ($this->id) {
+            // ... Your code here as normal ...
+        }
+        // otherwise do nothing, do NOT throw an exception!
+    } 
+ 
+     */   
+    
 }
