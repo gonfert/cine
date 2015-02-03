@@ -1,8 +1,11 @@
-# Composer PHAR
+# Composer
 composer.phar
+composer.lock
 
 # Doctrine
 vendor/
 
 # Otros
 *.php~
+.project
+nbproject
