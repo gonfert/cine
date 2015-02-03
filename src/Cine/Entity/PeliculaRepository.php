@@ -13,7 +13,7 @@ use Doctrine\ORM\EntityRepository;
 class PeliculaRepository extends EntityRepository
 {
     /**
-     * Encuentra una pelicula con sus comentarios
+     * Recupera los datos de una pelicula con todos sus comentarios.
      *
      * @param  int  $id
      * @return Pelicula
@@ -33,7 +33,8 @@ class PeliculaRepository extends EntityRepository
     }
 
     /**
-     * Encuentra peliculas con determinadas etiquetas
+     * Encuentra peliculas con que posean (al menos) el conjunto de etiquetas
+     * especificado como parametro.
      *
      * @param string[] $etiquetas
      * @return Pelicula[]
@@ -57,7 +58,7 @@ class PeliculaRepository extends EntityRepository
     }
 
     /**
-     * Devuelve las peliculas con el numero de sus comentarios
+     * Devuelve las peliculas con sus datos y con el numero de sus comentarios.
      *
      * @return array
      */

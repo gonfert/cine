@@ -59,18 +59,19 @@ $result = $query->getResult();
 // Ojo: Hemos creado las entidades pero no tienen todos sus campos informados.
 //      Solo podremos preguntar por las propiedades que se corresponden a los campos
 //      especificados en la claúsula SELECT. El resto serán nulos.
-foreach($result as $res) {
-    
+foreach($result as $res) 
+{    
     // Entidad principal (pelicula)
     echo sprintf("\nId: %d%s",$res->getId(),PHP_EOL);
     echo sprintf("Titulo: %s%s",$res->getTituloOriginal(),PHP_EOL);  
     
     // Obtenemos entidades vinculadas (comentarios)
     $comentarios = $res->getComentarios();
-    if ($comentarios)
+    if ($comentarios) 
+    {        
         echo "Comentarios:\n";
+        foreach ($comentarios as $com) 
         {
-        foreach ($comentarios as $com) {
             echo sprintf("(%s) '%s'%s",$com->getFecha()->format('Y-m-d'), $com->getTexto(),PHP_EOL);         
         }
     }

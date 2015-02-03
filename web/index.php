@@ -59,11 +59,7 @@ function muestraEtiquetas( $etiquetas )
                 <td>
                     <small>
                         <?php echo muestraEtiquetas($p->getEtiquetas()); ?><br>
-                        <?php if ($c == 0): ?>
-                        No hay comenatrios.
-                        <?php else: ?>
-                        <?php echo $c; ?> comentario(s).
-                        <?php endif ?>                    
+                        <?php echo ($c == 0)? 'No hay comentarios': $c.' comentario(s),'; ?>                  
                     </small>                    
                 </td>
                 <td><a href="edita-pelicula.php?id=<?php echo $p->getId()?>">Editar</a></td>
