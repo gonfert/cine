@@ -54,6 +54,4 @@ class LoadEtiquetasData implements FixtureInterface, DependentFixtureInterface {
         return ['Cine\DataFixtures\LoadPeliculasData'];             
     }
 
-
-//put your code here
 }
