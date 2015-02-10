@@ -75,7 +75,7 @@ class Pelicula {
      * 
      * @OneToMany(targetEntity="Comentario", mappedBy="pelicula")
      */
-    protected $comentarios;    
+    private $comentarios;    
     
     /**
      * @var Etiqueta[]
@@ -104,7 +104,7 @@ class Pelicula {
      * 
      * 
      */
-    protected $etiquetas;      
+    private $etiquetas;      
     
     /**
      * Inicializamos colecciones

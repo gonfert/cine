@@ -22,14 +22,14 @@ class Etiqueta {
      * @Id
      * @Column(type="string", name="name")
      */
-    protected $nombre;
+    private $nombre;
     
     /**
      * @var Pelicula[]
      *
      * @ManyToMany(targetEntity="Pelicula", mappedBy="etiquetas")
      */
-    protected $peliculas;
+    private $peliculas;
     
     /**
      * Inicializa la coleccion
@@ -38,7 +38,6 @@ class Etiqueta {
     {
         $this->peliculas = new ArrayCollection();
     }    
-
 
     /**
      * Set nombre

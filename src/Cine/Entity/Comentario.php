@@ -23,28 +23,28 @@ class Comentario {
     * @GeneratedValue
     * @Column(type="integer")
     */
-    protected $id;
+    private $id;
     
     /**
     * @var string
     *
     * @Column(type="text")
     */
-    protected $texto;
+    private $texto;
     
     /**
     * @var \DateTime
     *
     * @Column(type="datetime")
     */
-    protected $fecha;
+    private $fecha;
     
     /**
     * @var Pelicula
     *
     * @ManyToOne(targetEntity="Pelicula", inversedBy="comentarios")
     */
-    protected $pelicula;
+    private $pelicula;
 
     /**
      * Get id
