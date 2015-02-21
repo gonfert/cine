@@ -37,3 +37,7 @@ $config = Setup::createAnnotationMetadataConfiguration($entitiesPath, $dev);
  */
 $entityManager = EntityManager::create($dbParams, $config); 
 
+/*
+ *  Activamos el log de consultas
+ */
+$entityManager->getConnection()->getConfiguration()->setSQLLogger( new \Cine\Logger\QueryLogger()); 

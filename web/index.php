@@ -24,12 +24,17 @@ if (isset($_GET['tags'])) {
 function muestraEtiquetas( $etiquetas )
 {
     $retVal = '';
-    $selectedTags = explode(',', $_GET['tags']);    
-    foreach($etiquetas as $e){
+    $selectedTags = array();    
+    
+    if (isset($_GET['tags']))
+        $selectedTags = explode(',', $_GET['tags']);    
+    
+    foreach($etiquetas as $e) {
         $label = in_array($e,$selectedTags)? 
                 '<strong>'.htmlspecialchars($e).'</strong>' : htmlspecialchars($e);
         $retVal .= '<a href="index.php?tags='.urlencode($e).'">'.$label.'</a> ';                       
     } 
+    
     return $retVal;
 }
 
