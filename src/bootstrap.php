@@ -40,4 +40,5 @@ $entityManager = EntityManager::create($dbParams, $config);
 /*
  *  Activamos el log de consultas
  */
-$entityManager->getConnection()->getConfiguration()->setSQLLogger( new \Cine\Logger\QueryLogger()); 
+$entityManager->getConnection()->getConfiguration()->setSQLLogger( new \Cine\Logger\QueryLogger() ); 
+//$entityManager->getConnection()->getConfiguration()->setSQLLogger( new Doctrine\DBAL\Logging\EchoSQLLogger() ); 
