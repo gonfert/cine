@@ -15,7 +15,7 @@ use Doctrine\DBAL\Logging\SQLLogger;
 class QueryLogger implements SQLLogger
 {
     
-    private $ellapsedTime;
+    private $elapsedTime;
     private $log;
     private $logFileName = 'query.log';
 
@@ -31,7 +31,7 @@ class QueryLogger implements SQLLogger
     public function startQuery($sql, array $params = null, array $types = null)
     {
         $this->log = fopen($this->logFileName,'a');     
-        $this->ellapsedTime = microtime(TRUE);
+        $this->elapsedTime = microtime(TRUE);
         
         $logLineFormat = 
                 '* Consulta:' . PHP_EOL .'%s' . PHP_EOL .
@@ -43,6 +43,6 @@ class QueryLogger implements SQLLogger
 
     public function stopQuery()
     {       
-        fwrite($this->log, sprintf('Tiempo: %f seg.'.PHP_EOL.PHP_EOL,(microtime(TRUE)-$this->ellapsedTime)));
+        fwrite($this->log, sprintf('Tiempo: %f seg.'.PHP_EOL.PHP_EOL,(microtime(TRUE)-$this->elapsedTime)));
     }
 }
